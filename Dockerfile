@@ -1,16 +1,16 @@
 # ---------- Build Stage ----------
-FROM maven:3.9.6-eclipse-temurin-21 AS build
+FROM maven:3.9.16-eclipse-temurin-25 AS build
 
 WORKDIR /app
 
-# Copy project files
+# Copy project
 COPY . .
 
-# Build the JAR
+# Build the application
 RUN mvn clean package -DskipTests
 
 # ---------- Runtime Stage ----------
-FROM eclipse-temurin:21-jre-alpine
+FROM eclipse-temurin:25
 
 WORKDIR /app
 
@@ -18,9 +18,9 @@ WORKDIR /app
 COPY --from=build /app/target/portfolio-0.0.1-SNAPSHOT.jar portfolio.jar
 
 # Create a non-root user
-RUN addgroup -S spring && adduser -S spring -G spring
+RUN useradd -ms /bin/bash spring
 
-USER spring:spring
+USER spring
 
 EXPOSE 8080
 
