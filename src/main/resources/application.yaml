@@ -2,5 +2,23 @@ spring:
   application:
     name: portfolio
 
-  NAME:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+
+owner:
+  email: ${OWNER_EMAIL}
+
+NAME:
     ${NAME}
+FRONTEND_URL:
+    ${FRONTEND_URL}
