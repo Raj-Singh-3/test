@@ -19,6 +19,9 @@ public class MailService {
     @Value("${owner.email}")
     private String ownerEmail;
 
+    @Value("${BACKEND_URL}")
+    private String backendUrl;
+
     public MailService(JavaMailSender mailSender) {
         this.mailSender = mailSender;
     }
@@ -31,8 +34,7 @@ public class MailService {
 
         pendingMessages.put(token, request);
 
-        String verifyLink =
-                "http://localhost:8080/api/contact/verify?token=" + token;
+        String verifyLink = backendUrl + "/api/contact/verify?token=" + token;
 
         SimpleMailMessage mail = new SimpleMailMessage();
 

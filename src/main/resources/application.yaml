@@ -1,7 +1,6 @@
 spring:
   application:
     name: portfolio
-
   mail:
     host: smtp.gmail.com
     port: 587
@@ -14,11 +13,11 @@ spring:
           starttls:
             enable: true
 
-
 owner:
   email: ${OWNER_EMAIL}
-
 NAME:
     ${NAME}
 FRONTEND_URL:
     ${FRONTEND_URL}
+BACKEND_URL:
+    ${BACKEND_URL}
