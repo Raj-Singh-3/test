@@ -3,4 +3,4 @@ spring:
     name: portfolio
 
   NAME:
-    ${NAME:RajLaxmanSingh}
+    ${NAME}

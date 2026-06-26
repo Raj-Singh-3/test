@@ -22,8 +22,7 @@ WORKDIR /app
 
 # Copy the built JAR from build stage
 # Your JAR will be named like: portfolio-0.0.1-SNAPSHOT.jar
-COPY --from=build /app/target/*.jar app.jar
-
+COPY --from=build /app/target/portfolio-0.0.1-SNAPSHOT.jar portfolio.jar
 # Create a non-root user
 RUN addgroup -S spring && adduser -S spring -G spring
 USER spring:spring
@@ -32,4 +31,4 @@ USER spring:spring
 EXPOSE 8080
 
 # Run the application with environment variable support
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "portfolio.jar"]
